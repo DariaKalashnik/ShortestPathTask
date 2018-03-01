@@ -1,0 +1,1 @@
+#insert into city_table (name, population) values ('Paris', 59494);
