@@ -15,7 +15,7 @@ public class DijkstraAlgorithmTest {
     private List<Edge> edges;
 
     @Test
-    public void testExcute() {
+    public void testExecute() {
         nodes = new ArrayList<>();
         edges = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
@@ -51,8 +51,7 @@ public class DijkstraAlgorithmTest {
 
     }
 
-    private void addLane(String laneId, int sourceLocNo, int destLocNo,
-                         int duration) {
+    private void addLane(String laneId, int sourceLocNo, int destLocNo, int duration) {
         Edge lane = new Flight(laneId, (City) nodes.get(sourceLocNo), (City) nodes.get(destLocNo), Duration.ofMinutes(duration), duration, "DummyLine");
         edges.add(lane);
     }

@@ -46,8 +46,8 @@ public class City implements Vertex {
 
     @Override
     public String toString() {
-        return "City name = " + cityName + '\'' +
-                ", Population = " + cityPopulation;
+        return "City name = " + cityName
+                + ", Population = " + cityPopulation;
     }
 
     @Override

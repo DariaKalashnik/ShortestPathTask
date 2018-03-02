@@ -12,7 +12,7 @@ import models.Vertex;
 import java.util.*;
 
 public class DijkstraAlgorithm {
-    private final List<Vertex> nodes;
+    final List<Vertex> nodes;
     private final List<Edge> edges;
     private Set<Vertex> settledNodes;
     private Set<Vertex> unSettledNodes;

@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -64,7 +65,7 @@ public class Controller {
     }
 
     private void findRouteBetween(City start, City dest, String airLine) {
-        LinkedList<Vertex> path = null;
+        LinkedList<Vertex> listOfCities = null;
         List<Edge> listEdges = new ArrayList<>();
 
         if (airLine == null) {
@@ -81,13 +82,27 @@ public class Controller {
         Graph graph = new Graph(listVertexes, listEdges);
         DijkstraAlgorithm dijkstraAlgorithm = new DijkstraAlgorithm(graph);
         dijkstraAlgorithm.execute(start);
-        path = dijkstraAlgorithm.getPath(dest);
+        listOfCities = dijkstraAlgorithm.getPath(dest);
 
 
-        if (path != null) {
-            for (Vertex vertex : path) {
-                System.out.println(vertex);
+        Duration totalFlightTime = Duration.ofMinutes(0);
+        if (listOfCities != null) {
+
+            for (int i = 0; i < listOfCities.size()-1; i++) {
+
+                for (Edge flight: listEdges) {
+                    if (flight.getSource() == listOfCities.get(i)
+                            && flight.getDestination() == listOfCities.get(i+1)) {
+
+                        System.out.println(flight);
+                        totalFlightTime = totalFlightTime.plus(((Flight) flight).getFlightDuration());
+                        break;
+                    }
+                }
             }
+
+            System.out.println("Total time: " + Flight.durationToString(totalFlightTime));
+
         } else {
             System.out.println("No route");
         }
@@ -95,16 +110,16 @@ public class Controller {
 
     }
 
-    private XMLStreamReader openXml(String fileName) throws FileNotFoundException, XMLStreamException {
+    private XMLStreamReader openXml() throws FileNotFoundException, XMLStreamException {
         XMLInputFactory inputFactory = XMLInputFactory.newFactory();
-        FileReader fileReader = new FileReader(fileName);
+        FileReader fileReader = new FileReader("flights.xml");
         return inputFactory.createXMLStreamReader(fileReader);
     }
 
     private void readXMLFlights() {
         try {
             // Create a stream reader object
-            XMLStreamReader reader = openXml("flights.xml");
+            XMLStreamReader reader = openXml();
             // Read the flights.xml file
             while (reader.hasNext()) {
                 int eventType = reader.getEventType();
@@ -135,7 +150,7 @@ public class Controller {
     private void readXMLCities() {
         try {
             // Create a stream reader object
-            XMLStreamReader reader = openXml("flights.xml");
+            XMLStreamReader reader = openXml();
             // Read the flights.xml file
             while (reader.hasNext()) {
                 int eventType = reader.getEventType();

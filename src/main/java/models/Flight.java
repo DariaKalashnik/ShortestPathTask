@@ -23,6 +23,12 @@ public class Flight implements Edge {
         this.airLine = airLine;
     }
 
+    public static String durationToString(Duration duration) {
+        String flightTime = duration.toHours() > 0 ? duration.toHours() + " hours " : "";
+        flightTime += (duration.toMinutes() - duration.toHours()*60)  + " minutes ";
+        return flightTime;
+    }
+
     public String getAirLine() {
         return airLine;
     }
@@ -88,13 +94,10 @@ public class Flight implements Edge {
     }
 
     @Override
-    public String toString() {
-        return "Flight{" +
-                "startCityName='" + startCity + '\'' +
-                ", destCityName='" + destCity + '\'' +
-                ", flightDuration=" + flightDuration +
-                ", flightDistance=" + flightDistance +
-                ", airLine='" + airLine + '\'' +
-                '}';
+    public String toString() {return startCity.getName() + " -> " + destCity.getName() +
+                ", duration: " +
+                durationToString(flightDuration) +
+                ", flightDistance: " + flightDistance + "kms " +
+                ", airLine: " + airLine;
     }
 }
