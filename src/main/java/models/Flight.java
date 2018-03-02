@@ -6,18 +6,18 @@ import java.time.LocalTime;
 public class Flight implements Edge {
 
     private String id;
-    private String startCityName;
-    private String destCityName;
+    private City startCity;
+    private City destCity;
     private Duration flightDuration;
     private int flightDistance;
     private String airLine;
 
     public Flight () {}
 
-    public Flight(String id, String startCityName, String destCityName, Duration flightDuration, int flightDistance, String airLine) {
+    public Flight(String id, City startCity, City destCity, Duration flightDuration, int flightDistance, String airLine) {
         this.id = id;
-        this.startCityName = startCityName;
-        this.destCityName = destCityName;
+        this.startCity = startCity;
+        this.destCity = destCity;
         this.flightDuration = flightDuration;
         this.flightDistance = flightDistance;
         this.airLine = airLine;
@@ -31,20 +31,24 @@ public class Flight implements Edge {
         this.airLine = airLine;
     }
 
-    public String getStartCityName() {
-        return startCityName;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setStartCityName(String startCityName) {
-        this.startCityName = startCityName;
+    public City getStartCity() {
+        return startCity;
     }
 
-    public String getDestCityName() {
-        return destCityName;
+    public void setStartCity(City startCity) {
+        this.startCity = startCity;
     }
 
-    public void setDestCityName(String destCityName) {
-        this.destCityName = destCityName;
+    public City getDestCity() {
+        return destCity;
+    }
+
+    public void setDestCity(City destCity) {
+        this.destCity = destCity;
     }
 
     public Duration getFlightDuration() {
@@ -70,24 +74,24 @@ public class Flight implements Edge {
 
     @Override
     public Vertex getDestination() {
-        return null;
+        return destCity;
     }
 
     @Override
     public Vertex getSource() {
-        return null;
+        return startCity;
     }
 
     @Override
     public int getWeight() {
-        return 0;
+        return (int) flightDuration.toMinutes();
     }
 
     @Override
     public String toString() {
         return "Flight{" +
-                "startCityName='" + startCityName + '\'' +
-                ", destCityName='" + destCityName + '\'' +
+                "startCityName='" + startCity + '\'' +
+                ", destCityName='" + destCity + '\'' +
                 ", flightDuration=" + flightDuration +
                 ", flightDistance=" + flightDistance +
                 ", airLine='" + airLine + '\'' +

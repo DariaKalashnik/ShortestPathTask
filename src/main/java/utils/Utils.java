@@ -8,11 +8,13 @@ import java.time.Duration;
 import java.util.List;
 
 public class Utils {
-    public static void readFlightXMLelements(XMLStreamReader reader, List<Flight> listFlights){
+    public static void readFlightXMLelements(XMLStreamReader reader, List<Flight> listFlights, List<City> listCities){
 
         String id;
         String startCityName;
         String destCityName;
+        City startCity = null;
+        City destCity = null;;
         Duration duration;
         String airLine;
         int flightDistance;
@@ -31,7 +33,16 @@ public class Utils {
         duration = Duration.ofHours(Integer.parseInt(hoursAndMinutes[0]));
         duration = duration.plusMinutes(Integer.parseInt(hoursAndMinutes[1]));
 
-        flight = new Flight(id, startCityName, destCityName, duration, flightDistance, airLine);
+        for (City city: listCities) {
+            if(city.getName().equals(startCityName)) {
+                startCity = city;
+            } else if (city.getName().equals(destCityName)) {
+                destCity = city;
+            }
+        }
+
+
+        flight = new Flight(id, startCity, destCity, duration, flightDistance, airLine);
         listFlights.add(flight);
     }
 
@@ -47,5 +58,37 @@ public class Utils {
 
         city = new City(id, cityName, population);
         listFlights.add(city);
+    }
+
+    public static City findSmallestCity(List<City> listCities){
+        int smallestPopulation = Integer.MAX_VALUE;
+        for (City city: listCities) {
+            if (city.getCityPopulation() < smallestPopulation){
+                smallestPopulation = city.getCityPopulation();
+            }
+        }
+
+        for (City city: listCities) {
+            if (city.getCityPopulation() == smallestPopulation){
+                return city;
+            }
+        }
+
+        return null;
+    }
+
+    public static City findLargestCity(List<City> listCities){
+        // alternate way
+        if (listCities.size() > 0){
+            City largestCity = new City("dummyCity", "dummyCity", Integer.MIN_VALUE);
+            for (City city: listCities) {
+                if (city.getCityPopulation() > largestCity.getCityPopulation()){
+                    largestCity = city;
+                }
+            }
+            return largestCity;
+        }
+
+        return null;
     }
 }

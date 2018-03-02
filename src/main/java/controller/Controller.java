@@ -29,14 +29,20 @@ public class Controller {
         readXMLCities();
         readXMLFlights();
         printData();
+
+        City smallestCity = Utils.findSmallestCity(listCities);
+        City largestCity = Utils.findLargestCity(listCities);
+
+        System.out.println("Smallest city: " + smallestCity);
+        System.out.println("Largest city: " + largestCity);
     }
 
     private void printData() {
-        for (Flight flight : listFlights) {
-            System.out.println(flight.toString());
-        }
         for (City city : listCities) {
             System.out.println(city.toString());
+        }
+        for (Flight flight : listFlights) {
+            System.out.println(flight.toString());
         }
     }
 
@@ -57,13 +63,13 @@ public class Controller {
                     case XMLStreamConstants.START_ELEMENT:
                         mElementName = reader.getLocalName();
                         if (mElementName.equals(FLIGHT_ELEMENT_NAME)) {
-                            Utils.readFlightXMLelements(reader, listFlights);
+                            Utils.readFlightXMLelements(reader, listFlights, listCities);
                         }
                         break;
                     case XMLStreamConstants.ATTRIBUTE:
                         mElementName = reader.getLocalName();
                         if (mElementName.equals(FLIGHT_ELEMENT_NAME)) {
-                            Utils.readFlightXMLelements(reader, listFlights);
+                            Utils.readFlightXMLelements(reader, listFlights, listCities);
                         }
                         break;
                 }
@@ -106,6 +112,4 @@ public class Controller {
             e.printStackTrace();
         }
     }
-
-
 }
