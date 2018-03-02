@@ -17,47 +17,37 @@ import java.util.List;
 
 public class Controller {
 
-    private String mElementName;
-    List<City> listCities = new ArrayList<>();
-    List<Flight> listFlights = new ArrayList<>();
-
-
     private static final String FLIGHT_ELEMENT_NAME = "flight";
     private static final String CITY_ELEMENT_NAME = "city";
+
+    private String mElementName;
+    private List<City> listCities = new ArrayList<>();
+    private List<Flight> listFlights = new ArrayList<>();
+    private List<String> listAirlines = new ArrayList<>();
+    private City smallestCity;
+    private City largestCity;
 
 
     public void start() {
         readXMLCities();
         readXMLFlights();
+        System.out.println();
         printData();
+        System.out.println();
 
-        City smallestCity = Utils.findSmallestCity(listCities);
-        City largestCity = Utils.findLargestCity(listCities);
-
+        smallestCity = Utils.findSmallestCity(listCities);
+        largestCity = Utils.findLargestCity(listCities);
         System.out.println("Smallest city: " + smallestCity);
         System.out.println("Largest city: " + largestCity);
 
-
-        List<Vertex> listVertexes = new ArrayList<>();
-        List<Edge> listEdges = new ArrayList<>();
-
-        for (Flight f : listFlights) {
-            listEdges.add((Edge) f);
-        }
-        for (City c : listCities) {
-            listVertexes.add((Vertex) c);
+        for (String currentAirLine: listAirlines) {
+            System.out.println("\nFlight between the smallest and largest city with " + currentAirLine);
+            findRouteBetween(smallestCity, largestCity, currentAirLine);
         }
 
-        Graph graph = new Graph(listVertexes, listEdges);
-        DijkstraAlgorithm dijkstraAlgorithm = new DijkstraAlgorithm(graph);
-        dijkstraAlgorithm.execute(listVertexes.get(0));
-        LinkedList<Vertex> path = dijkstraAlgorithm.getPath(listVertexes.get(3));
+        System.out.println("\nFlight between the smallest and largest city using all airlines");
+        findRouteBetween(smallestCity, largestCity);
 
-        for (Vertex vertex : path) {
-            System.out.println(vertex);
-        }
-
-//        System.out.println(path);
     }
 
     private void printData() {
@@ -67,6 +57,42 @@ public class Controller {
         for (Flight flight : listFlights) {
             System.out.println(flight.toString());
         }
+    }
+
+    private void findRouteBetween(City start, City dest) {
+        findRouteBetween(start, dest, null);
+    }
+
+    private void findRouteBetween(City start, City dest, String airLine) {
+        LinkedList<Vertex> path = null;
+        List<Edge> listEdges = new ArrayList<>();
+
+        if (airLine == null) {
+            listEdges.addAll(listFlights);
+        } else {
+            for (Flight flight : listFlights) {
+                if (flight.getAirLine().equals(airLine)) {
+                    listEdges.add((Edge) flight);
+                }
+            }
+        }
+
+        List<Vertex> listVertexes = new ArrayList<>(listCities);
+        Graph graph = new Graph(listVertexes, listEdges);
+        DijkstraAlgorithm dijkstraAlgorithm = new DijkstraAlgorithm(graph);
+        dijkstraAlgorithm.execute(start);
+        path = dijkstraAlgorithm.getPath(dest);
+
+
+        if (path != null) {
+            for (Vertex vertex : path) {
+                System.out.println(vertex);
+            }
+        } else {
+            System.out.println("No route");
+        }
+
+
     }
 
     private XMLStreamReader openXml(String fileName) throws FileNotFoundException, XMLStreamException {
@@ -86,13 +112,13 @@ public class Controller {
                     case XMLStreamConstants.START_ELEMENT:
                         mElementName = reader.getLocalName();
                         if (mElementName.equals(FLIGHT_ELEMENT_NAME)) {
-                            Utils.readFlightXMLelements(reader, listFlights, listCities);
+                            Utils.readFlightXMLelements(reader, listFlights, listCities, listAirlines);
                         }
                         break;
                     case XMLStreamConstants.ATTRIBUTE:
                         mElementName = reader.getLocalName();
                         if (mElementName.equals(FLIGHT_ELEMENT_NAME)) {
-                            Utils.readFlightXMLelements(reader, listFlights, listCities);
+                            Utils.readFlightXMLelements(reader, listFlights, listCities, listAirlines);
                         }
                         break;
                 }

@@ -8,7 +8,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class Utils {
-    public static void readFlightXMLelements(XMLStreamReader reader, List<Flight> listFlights, List<City> listCities){
+    public static void readFlightXMLelements(XMLStreamReader reader, List<Flight> listFlights, List<City> listCities, List<String> listAirlines){
 
         String id;
         String startCityName;
@@ -41,6 +41,9 @@ public class Utils {
             }
         }
 
+        if(!listAirlines.contains(airLine)) {
+            listAirlines.add(airLine);
+        }
 
         flight = new Flight(id, startCity, destCity, duration, flightDistance, airLine);
         listFlights.add(flight);

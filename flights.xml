@@ -4,15 +4,19 @@
             airLine="Wizz Air"> </flight>
 
     <flight id="1" startCityName="London" destCityName="Washington" flightDuration="04:50" flightDistance="3000"
-            airLine="British Airlines"> </flight>
+            airLine="Wizz Air"> </flight>
 
     <flight id="2" startCityName="Washington" destCityName="Los Angeles" flightDuration="03:20" flightDistance="2000"
+            airLine="Wizz Air"> </flight>
+
+    <flight id="3" startCityName="Barra" destCityName="Los Angeles" flightDuration="5:00" flightDistance="200"
             airLine="United Airlines"> </flight>
 
-    <flight id="3" startCityName="Barra" destCityName="Los Angeles" flightDuration="25:00" flightDistance="2000"
-            airLine="United Airlines"> </flight>
+    <flight id="4" startCityName="Washington" destCityName="Los Angeles" flightDuration="03:20" flightDistance="2000"
+            airLine="Lufthansa"> </flight>
 
-    <city id="0" cityName="Barra" population="23652"> </city>
+
+    <city id="0" cityName="Barra" population="232"> </city>
     <city id="1" cityName="London" population="87000"> </city>
     <city id="2" cityName="Washington" population="2721"> </city>
     <city id="3" cityName="Los Angeles" population="933652"> </city>
