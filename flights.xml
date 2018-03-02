@@ -9,11 +9,11 @@
     <flight id="2" startCityName="Washington" destCityName="Los Angeles" flightDuration="03:20" flightDistance="2000"
             airLine="United Airlines"> </flight>
 
-    <flight id="3" startCityName="Barra" destCityName="Los Angeles" flightDuration="05:00" flightDistance="2000"
+    <flight id="3" startCityName="Barra" destCityName="Los Angeles" flightDuration="25:00" flightDistance="2000"
             airLine="United Airlines"> </flight>
 
-    <city id="0" cityName="Barra" population="23652"></city>
-    <city id="1" cityName="London" population="87000"></city>
-    <city id="2" cityName="Washington" population="2721"></city>
-    <city id="3" cityName="Los Angeles" population="933652"></city>
+    <city id="0" cityName="Barra" population="23652"> </city>
+    <city id="1" cityName="London" population="87000"> </city>
+    <city id="2" cityName="Washington" population="2721"> </city>
+    <city id="3" cityName="Los Angeles" population="933652"> </city>
 </flights>

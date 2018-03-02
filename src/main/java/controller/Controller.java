@@ -1,7 +1,7 @@
 package controller;
 
-import models.City;
-import models.Flight;
+import engine.DijkstraAlgorithm;
+import models.*;
 import utils.Utils;
 
 import javax.xml.stream.XMLInputFactory;
@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Controller {
@@ -35,6 +36,28 @@ public class Controller {
 
         System.out.println("Smallest city: " + smallestCity);
         System.out.println("Largest city: " + largestCity);
+
+
+        List<Vertex> listVertexes = new ArrayList<>();
+        List<Edge> listEdges = new ArrayList<>();
+
+        for (Flight f : listFlights) {
+            listEdges.add((Edge) f);
+        }
+        for (City c : listCities) {
+            listVertexes.add((Vertex) c);
+        }
+
+        Graph graph = new Graph(listVertexes, listEdges);
+        DijkstraAlgorithm dijkstraAlgorithm = new DijkstraAlgorithm(graph);
+        dijkstraAlgorithm.execute(listVertexes.get(0));
+        LinkedList<Vertex> path = dijkstraAlgorithm.getPath(listVertexes.get(3));
+
+        for (Vertex vertex : path) {
+            System.out.println(vertex);
+        }
+
+//        System.out.println(path);
     }
 
     private void printData() {

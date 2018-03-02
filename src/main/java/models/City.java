@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Objects;
+
 public class City implements Vertex {
 
     private String id;
@@ -14,7 +16,7 @@ public class City implements Vertex {
 
     @Override
     public String getId() {
-        return cityName;
+        return id;
     }
 
     public void setCityName(String cityName) {
@@ -48,5 +50,18 @@ public class City implements Vertex {
                 "cityName='" + cityName + '\'' +
                 ", cityPopulation=" + cityPopulation +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        City city = (City) o;
+        return Objects.equals(id, city.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
