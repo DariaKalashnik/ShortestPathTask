@@ -17,16 +17,17 @@ import java.util.List;
 public class Controller {
 
     private String mElementName;
-    List<Flight> listFlights = new ArrayList<>();
     List<City> listCities = new ArrayList<>();
+    List<Flight> listFlights = new ArrayList<>();
+
 
     private static final String FLIGHT_ELEMENT_NAME = "flight";
     private static final String CITY_ELEMENT_NAME = "city";
 
 
     public void start() {
-        readXMLFlights();
         readXMLCities();
+        readXMLFlights();
         printData();
     }
 

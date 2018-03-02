@@ -7,10 +7,6 @@ package models;
 
 import java.util.List;
 
-/**
- *
- * @author dobszai
- */
 public class Graph {
     private final List<Vertex> vertexes;
     private final List<Edge> edges;

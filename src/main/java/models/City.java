@@ -1,13 +1,20 @@
 package models;
 
-public class City {
+public class City implements Vertex {
 
+    private String id;
     private String cityName;
     private int cityPopulation;
 
-    public City(String cityName, int cityPopulation) {
+    public City(String id, String cityName, int cityPopulation) {
+        this.id = id;
         this.cityName = cityName;
         this.cityPopulation = cityPopulation;
+    }
+
+    @Override
+    public String getId() {
+        return cityName;
     }
 
     public void setCityName(String cityName) {
@@ -24,6 +31,15 @@ public class City {
 
     public int getCityPopulation() {
         return cityPopulation;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String getName() {
+        return cityName;
     }
 
     @Override

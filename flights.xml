@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <flights>
-    <flight startCityName="Barra" destCityName="London" flightDuration="00:20" flightDistance="200"
+    <flight id="0" startCityName="Barra" destCityName="London" flightDuration="00:20" flightDistance="200"
             airLine="Wizz Air"> </flight>
 
-    <flight startCityName="London" destCityName="Washington" flightDuration="04:50" flightDistance="3000"
+    <flight id="1" startCityName="London" destCityName="Washington" flightDuration="04:50" flightDistance="3000"
             airLine="British Airlines"> </flight>
 
-    <flight startCityName="Washington" destCityName="Los Angeles" flightDuration="03:20" flightDistance="2000"
+    <flight id="2" startCityName="Washington" destCityName="Los Angeles" flightDuration="03:20" flightDistance="2000"
             airLine="United Airlines"> </flight>
 
-    <flight startCityName="Barra" destCityName="Los Angeles" flightDuration="05:00" flightDistance="2000"
+    <flight id="3" startCityName="Barra" destCityName="Los Angeles" flightDuration="05:00" flightDistance="2000"
             airLine="United Airlines"> </flight>
 
-    <city cityName="Barra" population="23652"> </city>
-    <city cityName="London" population="87000"> </city>
-    <city cityName="Washington" population="2721"> </city>
-    <city cityName="Los Angeles" population="933652"> </city>
+    <city id="0" cityName="Barra" population="23652"></city>
+    <city id="1" cityName="London" population="87000"></city>
+    <city id="2" cityName="Washington" population="2721"></city>
+    <city id="3" cityName="Los Angeles" population="933652"></city>
 </flights>
