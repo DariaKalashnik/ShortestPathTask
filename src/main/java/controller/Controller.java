@@ -96,6 +96,16 @@ public class Controller {
 
                         System.out.println(flight);
                         totalFlightTime = totalFlightTime.plus(((Flight) flight).getFlightDuration());
+
+                        /*
+                        adding the leftover minutes, except from the last flight
+                        as described in Task 2
+                        */
+                        if(i < listOfCities.size() - 2) {
+                            long leftoverMinutes = totalFlightTime.toMinutes() - totalFlightTime.toHours()*60;
+                            totalFlightTime = totalFlightTime.plusMinutes(60 - leftoverMinutes);
+                        }
+
                         break;
                     }
                 }
