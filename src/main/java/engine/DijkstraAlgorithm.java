@@ -6,6 +6,9 @@ import interfaces.Vertex;
 
 import java.util.*;
 
+/* used source for Dijkstra’s shortest path algorithm:
+* http://www.vogella.com/tutorials/JavaAlgorithmsDijkstra/article.html */
+
 public class DijkstraAlgorithm {
 
     final List<Vertex> nodes;

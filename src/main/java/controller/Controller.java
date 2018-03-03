@@ -14,11 +14,14 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+/**
+ * Created by Daria Kalashnikova on 3/3/2018.
+ */
 
 public class Controller {
 

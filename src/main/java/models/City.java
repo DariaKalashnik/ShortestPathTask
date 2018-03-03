@@ -4,6 +4,10 @@ import interfaces.Vertex;
 
 import java.util.Objects;
 
+/**
+ * Created by Daria Kalashnikova on 3/3/2018.
+ */
+
 public class City implements Vertex {
 
     private String id;

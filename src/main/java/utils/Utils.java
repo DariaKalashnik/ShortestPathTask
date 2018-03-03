@@ -7,6 +7,10 @@ import javax.xml.stream.XMLStreamReader;
 import java.time.Duration;
 import java.util.List;
 
+/**
+ * Created by Daria Kalashnikova on 3/3/2018.
+ */
+
 public class Utils {
 
     public static void readFlightXMLelements(XMLStreamReader reader, List<Flight> listFlights,

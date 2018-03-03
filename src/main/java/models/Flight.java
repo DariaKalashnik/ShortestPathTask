@@ -5,6 +5,10 @@ import interfaces.Vertex;
 
 import java.time.Duration;
 
+/**
+ * Created by Daria Kalashnikova on 3/3/2018.
+ */
+
 public class Flight implements Edge {
 
     private String id;
