@@ -1,7 +1,5 @@
 package interfaces;
 
-import interfaces.Vertex;
-
 public interface Edge {
 
     String getId();

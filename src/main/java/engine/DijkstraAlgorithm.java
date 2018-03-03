@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package engine;
 
 import interfaces.Edge;
@@ -12,6 +7,7 @@ import interfaces.Vertex;
 import java.util.*;
 
 public class DijkstraAlgorithm {
+
     final List<Vertex> nodes;
     private final List<Edge> edges;
     private Set<Vertex> settledNodes;
@@ -20,7 +16,6 @@ public class DijkstraAlgorithm {
     private Map<Vertex, Integer> distance;
 
     public DijkstraAlgorithm(Graph graph) {
-        // create a copy of the array so that we can operate on this array
         this.nodes = new ArrayList<>(graph.getVertexes());
         this.edges = new ArrayList<>(graph.getEdges());
     }
@@ -118,7 +113,7 @@ public class DijkstraAlgorithm {
             step = predecessors.get(step);
             path.add(step);
         }
-        // Put it into the correct order
+        // put it into the correct order
         Collections.reverse(path);
         return path;
     }

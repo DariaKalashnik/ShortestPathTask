@@ -14,7 +14,9 @@ public class Flight implements Edge {
     private int flightDistance;
     private String airLine;
 
-    public Flight () {}
+    // Empty constructor
+    public Flight() {
+    }
 
     public Flight(String id, City startCity, City destCity, Duration flightDuration, int flightDistance, String airLine) {
         this.id = id;
@@ -27,7 +29,7 @@ public class Flight implements Edge {
 
     public static String durationToString(Duration duration) {
         String flightTime = duration.toHours() > 0 ? duration.toHours() + " hours " : "";
-        flightTime += (duration.toMinutes() - duration.toHours()*60)  + " minutes ";
+        flightTime += (duration.toMinutes() - duration.toHours() * 60) + " minutes ";
         return flightTime;
     }
 
@@ -35,44 +37,8 @@ public class Flight implements Edge {
         return airLine;
     }
 
-    public void setAirLine(String airLine) {
-        this.airLine = airLine;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public City getStartCity() {
-        return startCity;
-    }
-
-    public void setStartCity(City startCity) {
-        this.startCity = startCity;
-    }
-
-    public City getDestCity() {
-        return destCity;
-    }
-
-    public void setDestCity(City destCity) {
-        this.destCity = destCity;
-    }
-
     public Duration getFlightDuration() {
         return flightDuration;
-    }
-
-    public void setFlightDuration(Duration flightDuration) {
-        this.flightDuration = flightDuration;
-    }
-
-    public int getFlightDistance() {
-        return flightDistance;
-    }
-
-    public void setFlightDistance(int flightDistance) {
-        this.flightDistance = flightDistance;
     }
 
     @Override
@@ -96,9 +62,9 @@ public class Flight implements Edge {
     }
 
     @Override
-    public String toString() {return startCity.getName() + " -> " + destCity.getName() +
-                ", duration: " +
-                durationToString(flightDuration) +
+    public String toString() {
+        return startCity.getName() + " -> " + destCity.getName() +
+                ", duration: " + durationToString(flightDuration) +
                 ", flightDistance: " + flightDistance + "kms " +
                 ", airLine: " + airLine;
     }

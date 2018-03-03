@@ -8,20 +8,20 @@ import java.time.Duration;
 import java.util.List;
 
 public class Utils {
+
     public static void readFlightXMLelements(XMLStreamReader reader, List<Flight> listFlights,
-                                             List<City> listCities, List<String> listAirlines){
+                                             List<City> listCities, List<String> listAirlines) {
 
         String id;
         String startCityName;
         String destCityName;
-        City startCity = null;
-        City destCity = null;;
-        Duration duration;
         String airLine;
-        int flightDistance;
-        Flight flight;
-
         String[] hoursAndMinutes;
+        int flightDistance;
+        City startCity = null;
+        City destCity = null;
+        Flight flight;
+        Duration duration;
 
         id = reader.getAttributeValue(0);
         startCityName = reader.getAttributeValue(1);
@@ -30,19 +30,19 @@ public class Utils {
         flightDistance = Integer.parseInt(reader.getAttributeValue(4));
         airLine = reader.getAttributeValue(5);
 
-        // get the hours, minutes and seconds value and add it to the mDuration
+        // get the hours, minutes and seconds value and add it to the duration
         duration = Duration.ofHours(Integer.parseInt(hoursAndMinutes[0]));
         duration = duration.plusMinutes(Integer.parseInt(hoursAndMinutes[1]));
 
-        for (City city: listCities) {
-            if(city.getName().equals(startCityName)) {
+        for (City city : listCities) {
+            if (city.getName().equals(startCityName)) {
                 startCity = city;
             } else if (city.getName().equals(destCityName)) {
                 destCity = city;
             }
         }
 
-        if(!listAirlines.contains(airLine)) {
+        if (!listAirlines.contains(airLine)) {
             listAirlines.add(airLine);
         }
 
@@ -50,7 +50,7 @@ public class Utils {
         listFlights.add(flight);
     }
 
-    public static void readCityXMLelements(XMLStreamReader reader, List<City> listFlights){
+    public static void readCityXMLelements(XMLStreamReader reader, List<City> listFlights) {
         String id;
         String cityName;
         int population;
@@ -64,16 +64,16 @@ public class Utils {
         listFlights.add(city);
     }
 
-    public static City findSmallestCity(List<City> listCities){
+    public static City findSmallestCity(List<City> listCities) {
         int smallestPopulation = Integer.MAX_VALUE;
-        for (City city: listCities) {
-            if (city.getCityPopulation() < smallestPopulation){
+        for (City city : listCities) {
+            if (city.getCityPopulation() < smallestPopulation) {
                 smallestPopulation = city.getCityPopulation();
             }
         }
 
-        for (City city: listCities) {
-            if (city.getCityPopulation() == smallestPopulation){
+        for (City city : listCities) {
+            if (city.getCityPopulation() == smallestPopulation) {
                 return city;
             }
         }
@@ -81,12 +81,12 @@ public class Utils {
         return null;
     }
 
-    public static City findLargestCity(List<City> listCities){
+    public static City findLargestCity(List<City> listCities) {
         // alternate way
-        if (listCities.size() > 0){
-            City largestCity = new City("dummyCity", "dummyCity", Integer.MIN_VALUE);
-            for (City city: listCities) {
-                if (city.getCityPopulation() > largestCity.getCityPopulation()){
+        if (listCities.size() > 0) {
+            City largestCity = new City("dummyCityId", "dummyCityName", Integer.MIN_VALUE);
+            for (City city : listCities) {
+                if (city.getCityPopulation() > largestCity.getCityPopulation()) {
                     largestCity = city;
                 }
             }

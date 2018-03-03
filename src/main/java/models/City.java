@@ -21,24 +21,8 @@ public class City implements Vertex {
         return id;
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }
-
-    public void setCityPopulation(int cityPopulation) {
-        this.cityPopulation = cityPopulation;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
     public int getCityPopulation() {
         return cityPopulation;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     @Override
@@ -48,8 +32,8 @@ public class City implements Vertex {
 
     @Override
     public String toString() {
-        return "City name = " + cityName
-                + ", Population = " + cityPopulation;
+        return "City name = " + cityName +
+                ", Population = " + cityPopulation;
     }
 
     @Override
