@@ -1,6 +1,8 @@
 package controller;
 
 import engine.DijkstraAlgorithm;
+import interfaces.Edge;
+import interfaces.Vertex;
 import models.*;
 import utils.Utils;
 

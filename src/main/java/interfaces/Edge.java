@@ -1,4 +1,6 @@
-package models;
+package interfaces;
+
+import interfaces.Vertex;
 
 public interface Edge {
 

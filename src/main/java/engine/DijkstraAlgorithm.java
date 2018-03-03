@@ -5,9 +5,9 @@
  */
 package engine;
 
-import models.Edge;
+import interfaces.Edge;
 import models.Graph;
-import models.Vertex;
+import interfaces.Vertex;
 
 import java.util.*;
 

@@ -1,5 +1,7 @@
 package models;
 
+import interfaces.Vertex;
+
 import java.util.Objects;
 
 public class City implements Vertex {

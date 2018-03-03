@@ -1,5 +1,8 @@
 package models;
 
+import interfaces.Edge;
+import interfaces.Vertex;
+
 import java.util.List;
 
 public class Graph {

@@ -1,5 +1,7 @@
 package engine;
 
+import interfaces.Edge;
+import interfaces.Vertex;
 import models.*;
 import org.junit.Test;
 

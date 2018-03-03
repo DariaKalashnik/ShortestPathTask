@@ -1,7 +1,9 @@
 package models;
 
+import interfaces.Edge;
+import interfaces.Vertex;
+
 import java.time.Duration;
-import java.time.LocalTime;
 
 public class Flight implements Edge {
 
